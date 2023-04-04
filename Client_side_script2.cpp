@@ -6,13 +6,25 @@
 
 using namespace std;
 
+enum _messag_type = {REGISTER_REQ_MSG=1, REGSTER_RESP_MSG, NOMINATION_REQ_MSG, 
+
+typedef struct _message_base {
+    unsigned int32 messageid;
+    unsigned unit32 empid;
+}Message_base;
+
+typedef struct _trainings {
+    int topicid;
+    
 struct RegisterRequest {
-    int employeeID;
-    string role;
+    Message_base message_base;
 };
 
+
 struct RegisterResponse {
-    int employeeID;
+    Message_base message_type;
+    Trainings nominated_trainings[MAX_NOMINATED_TRG];
+    unsigned num_trainings;
     vector<string> nominatedTrainings;
     vector<string> completedTrainings;
     vector<string> rejectedTrainings;
