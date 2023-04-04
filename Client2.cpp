@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 using namespace std;
-enum ROLE{    EMPLOYEE,    MANAGER,    TRAINER};
+
 class Employee{
   private:    
   int id = 0;    
