@@ -100,5 +100,29 @@ int main() {
     // Receive a register response message from the server
     RegisterResponse registerResponse;
     messageHandler.ReceiveRegisterResponse(registerResponse);
+    
+    // Print the nominated trainings received from the server
+    cout << "Nominated trainings: " << registerResponse.nominatedTrainings << endl;
+
+    // Send a nominate request message to the server
+    messageHandler.SendNominateRequest(registerResponse.employeeID, "Advanced Programming", 456);
+
+    // Receive a request approval in progress response message from the server
+    RequestApprovalInProgressResponse requestApprovalInProgressResponse;
+   
+    recv(sock, &requestApprovalInProgressResponse, sizeof(requestApprovalInProgressResponse), 0);
+
+    // Print the message received from the server
+    cout << requestApprovalInProgressResponse.message << endl;
+
+    // Close the socket
+    close(sock);
+    
+    // Cleanup the Winsock library
+    WSACleanup();
+
+
+    return 0;
+}
 
    
